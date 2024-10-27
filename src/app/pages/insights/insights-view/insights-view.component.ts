@@ -11,11 +11,11 @@ import { ReportsService } from "src/app/services/reports.service";
 export class InsightsViewComponent {
   loading: boolean = false;
 
-  cardData={
-    total_detection:0,
-    avg_detection_time:'60 min',
-    last_detection:'1 hour ago',
-  }
+  cardData = {
+    total_detection: 0,
+    avg_detection_time: "60 min",
+    last_detection: "1 hour ago",
+  };
 
   public dailyDetectionTrends: any = {
     series: [
@@ -210,108 +210,94 @@ export class InsightsViewComponent {
       },
     },
   };
-  constructor(private reportsService:ReportsService,private msgHandelService:MsgHandelService,){
-
-  }
+  constructor(
+    private reportsService: ReportsService,
+    private msgHandelService: MsgHandelService
+  ) {}
 
   ngOnInit(): void {
     this.getChartData();
   }
 
   getChartData() {
+    this.loading = true;
+    this.reportsService
+      .getAllAnalysis("limit=10&page=1&column=0&order=desc")
+      .subscribe(
+        (response) => {
+          if (response.status) {
+            console.log("response", response);
 
- 
-      this.loading = true;
-      this.reportsService
-        .getAllAnalysis('limit=10&page=1&column=0&order=desc')
-        .subscribe(
-          (response) => {
-            if (response.status) {
+            this.cardData = {
+              total_detection: response?.data?.data?.totalDetectedCount,
+              avg_detection_time: response?.data?.data?.lastDetectionTime,
+              last_detection: response?.data?.data?.avgTimeBetweenDetections,
+            };
 
-              console.log('response',response)
-
-              this.cardData={
-                total_detection:response?.data?.data?.totalDetectedCount,
-                avg_detection_time:response?.data?.data?.lastDetectionTime,
-                last_detection:response?.data?.data?.avgTimeBetweenDetections,
-              }
-
-              this.setDailyDetectionTrends(response);
-
-            
-
-
-
-
-             
-            }
-            this.loading = false;
-          },
-          (error) => {
-            this.loading = false;
-            // show msg
-            this.msgHandelService.handleError(error);
+            this.setDailyDetectionTrends(response);
           }
-        );
+          this.loading = false;
+        },
+        (error) => {
+          this.loading = false;
+          // show msg
+          this.msgHandelService.handleError(error);
+        }
+      );
 
-
-        const response1 = {
-          status: true,
-          data: {
-            cardData: {
-              totalDetections: 1000,
-              avgDetectionTime: 56,
-              lastDetection: 1,
-              systemStatus: true,
-            },
-            chartData: {
-              dailyDetectionTrends: {
-                xAxis: [1, 1, 4, 5, 6],
-                yAxis: [
-                  "2024-03-09T14:39:58.044Z",
-                  "2024-03-14T07:34:30.219Z",
-                  "2024-03-15T06:52:49.405Z",
-                  "2024-03-15T06:54:12.259Z",
-                  "2024-03-15T06:54:12.259Z",
-                ],
-              },
-              hourlyDetectionRate: {
-                xAxis: [1, 1, 4, 5, 6],
-                yAxis: [
-                  "2024-03-09T14:39:58.044Z",
-                  "2024-03-14T07:34:30.219Z",
-                  "2024-03-15T06:52:49.405Z",
-                  "2024-03-15T06:54:12.259Z",
-                ],
-              },
-              EnvironmentalConditionsDuringDetection: {
-                xAxis: [1, 1, 4, 5, 6],
-                yAxis: [
-                  "2024-03-09T14:39:58.044Z",
-                  "2024-03-14T07:34:30.219Z",
-                  "2024-03-15T06:52:49.405Z",
-                  "2024-03-15T06:54:12.259Z",
-                ],
-              },
-              detectionFrequency: {
-                xAxis1: [31, 40, 28, 51, 42, 109, 100],
-                xAxis2: [11, 32, 45, 32, 34, 52, 41],
-                yAxis: [
-                  "2024-03-09T14:39:58.044Z",
-                  "2024-03-14T07:34:30.219Z",
-                  "2024-03-15T06:52:49.405Z",
-                  "2024-03-15T06:54:12.259Z",
-                ],
-              },
-            },
+    const response1 = {
+      status: true,
+      data: {
+        cardData: {
+          totalDetections: 1000,
+          avgDetectionTime: 56,
+          lastDetection: 1,
+          systemStatus: true,
+        },
+        chartData: {
+          dailyDetectionTrends: {
+            xAxis: [1, 1, 4, 5, 6],
+            yAxis: [
+              "2024-03-09T14:39:58.044Z",
+              "2024-03-14T07:34:30.219Z",
+              "2024-03-15T06:52:49.405Z",
+              "2024-03-15T06:54:12.259Z",
+              "2024-03-15T06:54:12.259Z",
+            ],
           },
-        };
+          hourlyDetectionRate: {
+            xAxis: [1, 1, 4, 5, 6],
+            yAxis: [
+              "2024-03-09T14:39:58.044Z",
+              "2024-03-14T07:34:30.219Z",
+              "2024-03-15T06:52:49.405Z",
+              "2024-03-15T06:54:12.259Z",
+            ],
+          },
+          EnvironmentalConditionsDuringDetection: {
+            xAxis: [1, 1, 4, 5, 6],
+            yAxis: [
+              "2024-03-09T14:39:58.044Z",
+              "2024-03-14T07:34:30.219Z",
+              "2024-03-15T06:52:49.405Z",
+              "2024-03-15T06:54:12.259Z",
+            ],
+          },
+          detectionFrequency: {
+            xAxis1: [31, 40, 28, 51, 42, 109, 100],
+            xAxis2: [11, 32, 45, 32, 34, 52, 41],
+            yAxis: [
+              "2024-03-09T14:39:58.044Z",
+              "2024-03-14T07:34:30.219Z",
+              "2024-03-15T06:52:49.405Z",
+              "2024-03-15T06:54:12.259Z",
+            ],
+          },
+        },
+      },
+    };
 
-        this.setHourlyDetectionrateChart(response1);
-
-    
-
-  
+    this.setHourlyDetectionrateChart(response1);
 
     // this.setDailyDetectionTrends(response);
     this.setEnviramnetalConditions(response1);
@@ -324,17 +310,13 @@ export class InsightsViewComponent {
       series: [
         {
           name: "Detections",
-          data: response?.data?.data?.dailyDetectionCount?.detectionCounts
-
-          ,
+          data: response?.data?.data?.dailyDetectionCount?.detectionCounts,
         },
       ],
       xaxis: {
-        categories:
-
-          response?.data?.data?.dailyDetectionCount?.dates.map(
-              (date: any) => this.convertDateToDefaultFormat(date)
-            ),
+        categories: response?.data?.data?.dailyDetectionCount?.dates.map(
+          (date: any) => this.convertDateToDefaultFormat(date)
+        ),
       },
       chart: {
         type: "area",
@@ -446,60 +428,58 @@ export class InsightsViewComponent {
   }
 
   setHourlyDetectionrateChart(response: any) {
+    this.hourlyDetectionrateChart = JSON.parse(
+      JSON.stringify({
+        series: [
+          {
+            name: "Hourly Detection",
+            data: [1, 1, 4, 5, 6],
+          },
+        ],
+        xaxis: {
+          categories: [
+            "2024-03-09T14:39:58.044Z",
+            "2024-03-14T07:34:30.219Z",
+            "2024-03-15T06:52:49.405Z",
+            "2024-03-15T06:54:12.259Z",
+          ].map((date: any) => this.convertDateToDefaultFormat(date)),
+        },
+        fill: {
+          colors: ["#19a463", "#19a463", "#19a463"], // Set fill color to primary color
+          type: "solid",
+          opacity: 0.7,
+        },
+        chart: {
+          type: "bar",
+          fontFamily: "'Plus Jakarta Sans', sans-serif;",
+          foreColor: "#19a463",
+          toolbar: {
+            show: false,
+          },
+          height: 300,
+          sparkline: {
+            enabled: true,
+          },
+          group: "sparklines",
+        },
 
-   
-    this.hourlyDetectionrateChart = JSON.parse(JSON.stringify({
-      series: [
-        {
-          name: "Hourly Detection",
-          data:  [1, 1, 4, 5, 6],
+        stroke: {
+          curve: "smooth",
+          width: 2,
+          colors: ["#19a463", "#19a463", "#19a463"],
         },
-      ],
-      xaxis: {
-        categories: [
-          "2024-03-09T14:39:58.044Z",
-          "2024-03-14T07:34:30.219Z",
-          "2024-03-15T06:52:49.405Z",
-          "2024-03-15T06:54:12.259Z",
-        ].map(
-          (date: any) => this.convertDateToDefaultFormat(date)
-        ),
-      },
-      fill: {
-        colors: ["#19a463", "#19a463", "#19a463"], // Set fill color to primary color
-        type: "solid",
-        opacity: 0.7,
-      },
-      chart: {
-        type: "bar",
-        fontFamily: "'Plus Jakarta Sans', sans-serif;",
-        foreColor: "#19a463",
-        toolbar: {
-          show: false,
-        },
-        height: 300,
-        sparkline: {
-          enabled: true,
-        },
-        group: "sparklines",
-      },
 
-      stroke: {
-        curve: "smooth",
-        width: 2,
-        colors: ["#19a463", "#19a463", "#19a463"],
-      },
-
-      markers: {
-        size: 0,
-      },
-      tooltip: {
-        theme: "dark",
-        x: {
-          show: false,
+        markers: {
+          size: 0,
         },
-      },
-    }));
+        tooltip: {
+          theme: "dark",
+          x: {
+            show: false,
+          },
+        },
+      })
+    );
   }
 
   setDetectionFrequency(response: any) {

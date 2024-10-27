@@ -959,7 +959,7 @@ i {
   height: 100%;
   position: fixed;
   background: #222222ae;
-  z-index: 10000;
+  z-index: 10;
   cursor: not-allowed;
 }
 
@@ -1117,4 +1117,8 @@ th {
   position: fixed;
   right: 0;
   bottom: 0;
+}
+
+.mat-drawer.mat-drawer-side {
+  z-index: 1 !important;
 }

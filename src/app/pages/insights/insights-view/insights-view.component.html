@@ -15,7 +15,7 @@
                     class="d-flex justify-content-between align-items-center small-text"
                   >
                     <p class="m-0">
-                      {{ cardData['total_detection'] | number : "1.0-0" }}
+                      {{ cardData["total_detection"] | number : "1.0-0" }}
                     </p>
                     <button mat-fab color="accent" class="shadow-none icon-48">
                       <i-tabler
@@ -38,7 +38,7 @@
                   <div
                     class="d-flex justify-content-between align-items-center small-text"
                   >
-                    <p class="m-0">{{cardData['avg_detection_time'] }}</p>
+                    <p class="m-0">{{ cardData["avg_detection_time"] }}</p>
                     <button mat-fab color="primary" class="shadow-none icon-48">
                       <i-tabler
                         name="clock-hour-4"
@@ -60,7 +60,7 @@
                   <div
                     class="d-flex justify-content-between align-items-center small-text"
                   >
-                    <p class="m-0">{{cardData['last_detection'] }}</p>
+                    <p class="m-0">{{ cardData["last_detection"] }}</p>
                     <button mat-fab color="warn" class="shadow-none icon-48">
                       <i-tabler
                         name="clock-record"
@@ -141,7 +141,7 @@
         </div>
 
         <div class="col-6 mb-5" *ngIf="">
-          <mat-card-title  class="mb-3"
+          <mat-card-title class="mb-3"
             >Environmental Conditions During Detection
           </mat-card-title>
 
