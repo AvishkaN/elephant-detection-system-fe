@@ -1,0 +1,10 @@
+export const TRADE_ACCOUNT_ID = "current_account";
+export const IS_PAPER_ACC = "is_paper_acc";
+export const IS_ADMIN_AS_USER = "is_admin_as_user";
+export const IS_MOBILE_VIEW = "is_mobile_view";
+export const USER_TYPE = "user_type";
+export const USER_ROUTE = "user_route";
+export const USER_PROTOCOL = "user_protocol";
+export const USER_IP = "user_ip";
+export const USER_PORT = "user_port";
+export const REFERRAL_PORT = "referral_code";

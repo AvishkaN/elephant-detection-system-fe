@@ -1,0 +1,126 @@
+.main {
+  margin-top: 2rem;
+  padding-bottom: 8rem !important;
+}
+.qr-code-comp {
+  //   flex: 0 0 33.666667%;
+  //   max-width: 33.666667%;
+
+  @media (max-width: 576px) {
+    // flex: 0 0 50%;
+    // max-width: 50%;
+  }
+}
+
+.coin-img {
+  width: 2rem;
+}
+
+.page-content-row {
+  @media (max-width: 992px) {
+    justify-content: center;
+  }
+}
+
+.page-content {
+  width: 90%;
+  margin: auto;
+
+  // @media (max-width: 576px) {
+  //   width: 85%;
+  // }
+}
+
+.qrcodeImage {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.wallet-address-field {
+  display: flex !important;
+
+  .mat-mdc-form-field-infix {
+    display: flex !important;
+  }
+}
+
+.coin-img {
+  width: 2rem;
+}
+
+.main-btn {
+  border-radius: 30px !important;
+  height: 2.3rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.small-text p {
+  font-size: 0.9rem;
+}
+
+.small-text-7 {
+  font-size: 0.7rem;
+}
+
+.small-text-5 {
+  font-size: 0.5rem;
+}
+
+.small-text-6 {
+  font-size: 0.6rem;
+}
+
+.pending-deposit-checker {
+  font-size: 1rem;
+  color: #747e88;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader2 {
+  width: fit-content;
+  font-weight: bold;
+  // font-family: monospace;
+  font-size: 1rem;
+  background: linear-gradient(
+      135deg,
+      #0000 calc(50% - 0.5em),
+      #000 0 calc(50% + 0.5em),
+      #0000 0
+    )
+    right/300% 100%;
+  animation: l22 3s infinite;
+}
+.loader2::after {
+  content: "Despot(s) is waiting for approval...";
+  color: #0000;
+  padding: 0 5px;
+  background: inherit;
+  background-image: linear-gradient(
+    135deg,
+    #000 calc(50% - 0.5em),
+    #fff 0 calc(50% + 0.5em),
+    #000 0
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@keyframes l22 {
+  100% {
+    background-position: left;
+  }
+}
+
+.map-container {
+  height: 400px;
+  #map {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px; // Apply border-radius of 20px
+    overflow: hidden; // Prevent the corners from being cut off
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Optional: Add a shadow for effect
+  }
+}

@@ -1,0 +1,57 @@
+<mat-card class="cardWithShadow">
+  <mat-card-content>
+    <div class="main">
+      <!-- <div class=" font-2-2 font-family-poppins font-weight-200">
+          Wallet
+        </div> -->
+      <mat-card-title class="font-1-7 mat-mdc-card-title"
+        >Recent Detections</mat-card-title
+      >
+
+      <!-- <div class=""> -->
+      <div class="map-container mt-4">
+        <div id="map" style="height: 400px"></div>
+      </div>
+      <!-- </div> -->
+
+      <div class="font-1-2 font-weight-600 mt-4">Detected locations</div>
+
+      <div class="mt-2 row">
+        <!-- <ul> -->
+        <div class="align-items-center d-flex mt-3 col-6">
+          <i class="fas fa-map-marker text-success"></i>
+          <div class="ml-2 font-1-1">Dimbulagala</div>
+        </div>
+        <div class="align-items-center d-flex mt-3 col-6">
+          <i class="fas fa-map-marker text-success"></i>
+          <div class="ml-2 font-1-1">Kaduruwela</div>
+        </div>
+        <div class="align-items-center d-flex mt-3 col-6">
+          <i class="fas fa-map-marker text-success"></i>
+          <div class="ml-2 font-1-1">Medirigiriya</div>
+        </div>
+        <div class="align-items-center d-flex mt-3 col-6">
+          <i class="fas fa-map-marker text-success"></i>
+          <div class="ml-2 font-1-1">Polonnaruwa</div>
+        </div>
+        <div class="align-items-center d-flex mt-3 col-6">
+          <i class="fas fa-map-marker text-success"></i>
+          <div class="ml-2 font-1-1">Manampitiya</div>
+        </div>
+        <div class="align-items-center d-flex mt-3 col-6">
+          <i class="fas fa-map-marker text-success"></i>
+          <div class="ml-2 font-1-1">Hingurakgoda</div>
+        </div>
+        <div class="align-items-center d-flex mt-3 col-6">
+          <i class="fas fa-map-marker text-success"></i>
+          <div class="ml-2 font-1-1">Giritale</div>
+        </div>
+        <!-- <div>anuradhapura</div>
+          <div>Jaffana</div> -->
+        <!-- </ul> -->
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<app-loader *ngIf="loading"></app-loader>

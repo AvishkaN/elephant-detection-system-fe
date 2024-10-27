@@ -1,0 +1,179 @@
+<mat-card class="cardWithShadow">
+  <mat-card-content>
+    <mat-card-title>System Detection Insights</mat-card-title>
+
+    <div class="main">
+      <!-- <div class="row"> -->
+      <div class="row mb-3">
+        <div class="col-md-3 col-sm-6 m-t-15 ml-0">
+          <mat-card class="cardWithShadow mb-0">
+            <mat-card-content class="">
+              <mat-card-title class="f-s-14">Total Detections</mat-card-title>
+              <div class="row mt-1">
+                <div class="col-12">
+                  <div
+                    class="d-flex justify-content-between align-items-center small-text"
+                  >
+                    <p class="m-0">
+                      {{ cardData['total_detection'] | number : "1.0-0" }}
+                    </p>
+                    <button mat-fab color="accent" class="shadow-none icon-48">
+                      <i-tabler
+                        name="calculator"
+                        class="text-white d-flex"
+                      ></i-tabler>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-md-3 col-sm-6 m-t-15 ml-0">
+          <mat-card class="cardWithShadow mb-0">
+            <mat-card-content class="">
+              <mat-card-title class="f-s-14">Avg Detection Time</mat-card-title>
+              <div class="row mt-1">
+                <div class="col-12">
+                  <div
+                    class="d-flex justify-content-between align-items-center small-text"
+                  >
+                    <p class="m-0">{{cardData['avg_detection_time'] }}</p>
+                    <button mat-fab color="primary" class="shadow-none icon-48">
+                      <i-tabler
+                        name="clock-hour-4"
+                        class="text-white d-flex"
+                      ></i-tabler>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-md-3 col-sm-6 m-t-15 ml-0">
+          <mat-card class="cardWithShadow mb-0">
+            <mat-card-content class="">
+              <mat-card-title class="f-s-14">Last Detection</mat-card-title>
+              <div class="row mt-1">
+                <div class="col-12">
+                  <div
+                    class="d-flex justify-content-between align-items-center small-text"
+                  >
+                    <p class="m-0">{{cardData['last_detection'] }}</p>
+                    <button mat-fab color="warn" class="shadow-none icon-48">
+                      <i-tabler
+                        name="clock-record"
+                        class="text-white d-flex"
+                      ></i-tabler>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-md-3 col-sm-6 m-t-15 ml-0">
+          <mat-card class="cardWithShadow mb-0">
+            <mat-card-content class="">
+              <mat-card-title class="f-s-14">System Status </mat-card-title>
+              <div class="row mt-1">
+                <div class="col-12">
+                  <div
+                    class="d-flex justify-content-between align-items-center small-text"
+                  >
+                    <p class="m-0">Active</p>
+                    <button mat-fab color="primary" class="shadow-none icon-48">
+                      <i-tabler
+                        name="tool"
+                        class="text-white d-flex"
+                      ></i-tabler>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <!-- </div> -->
+
+      <div class="row mt-4">
+        <div class="col-6 mb-5">
+          <mat-card-title class="mb-3">Daily Detection Trends</mat-card-title>
+
+          <!-- <div class="">
+            <div class=""></div>
+          </div> -->
+
+          <apx-chart
+            *ngIf="
+              dailyDetectionTrends?.series?.data?.length ||
+              dailyDetectionTrends?.xaxis?.categories?.length
+            "
+            [series]="dailyDetectionTrends.series"
+            [chart]="dailyDetectionTrends.chart"
+            [xaxis]="dailyDetectionTrends.xaxis"
+            [dataLabels]="dailyDetectionTrends.dataLabels"
+            [grid]="dailyDetectionTrends.grid"
+            [stroke]="dailyDetectionTrends.stroke"
+            [title]="dailyDetectionTrends.title"
+            [fill]="dailyDetectionTrends.fill"
+          ></apx-chart>
+
+          <!-- <div class="">date</div> -->
+        </div>
+
+        <div class="col-6 mb-5">
+          <mat-card-title class="mb-3">Hourly Detection</mat-card-title>
+
+          <div id="chart">
+            <apx-chart
+              [series]="hourlyDetectionrateChart.series"
+              [chart]="hourlyDetectionrateChart.chart"
+              [dataLabels]="hourlyDetectionrateChart.dataLabels"
+              [plotOptions]="hourlyDetectionrateChart.plotOptions"
+              [xaxis]="hourlyDetectionrateChart.xaxis"
+              [stroke]="hourlyDetectionrateChart.stroke"
+              [fill]="hourlyDetectionrateChart.fill"
+            ></apx-chart>
+          </div>
+        </div>
+
+        <div class="col-6 mb-5" *ngIf="">
+          <mat-card-title  class="mb-3"
+            >Environmental Conditions During Detection
+          </mat-card-title>
+
+          <div id="chart">
+            <apx-chart
+              [series]="EnviramnetalConditions.series"
+              [chart]="EnviramnetalConditions.chart"
+              [dataLabels]="EnviramnetalConditions.dataLabels"
+              [plotOptions]="EnviramnetalConditions.plotOptions"
+              [xaxis]="EnviramnetalConditions.xaxis"
+              [stroke]="EnviramnetalConditions.stroke"
+              [fill]="EnviramnetalConditions.fill"
+            ></apx-chart>
+          </div>
+        </div>
+        <div class="col-6 mb-5" *ngIf="">
+          <mat-card-title class="mb-3">Detection Frequency </mat-card-title>
+          <div id="chart">
+            <apx-chart
+              [series]="detectionFrequency.series"
+              [chart]="detectionFrequency.chart"
+              [xaxis]="detectionFrequency.xaxis"
+              [stroke]="detectionFrequency.stroke"
+              [tooltip]="detectionFrequency.tooltip"
+              [dataLabels]="detectionFrequency.dataLabels"
+              [fill]="detectionFrequency.fill"
+            ></apx-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<app-loader *ngIf="loading"></app-loader>

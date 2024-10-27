@@ -1,0 +1,55 @@
+//black
+$base-black: black;
+$bg-black: #181822;
+$base-transparent-black: #0607063d;
+$shaded-black: #1d1f2c;
+
+// yellow
+// $base-yellow: #ffc107;
+// $base-yellow: #aa77ff;
+// $base-yellow: #a555ec;
+// $base-yellow: #ffc107;
+$base-yellow: rgba(295, 193, 7, 1);
+$base-yellow-secondary: #ffc201;
+
+// green
+$light-green: #4e4d43;
+$bg-green: #19c509;
+
+// gray
+$base-grey: gray;
+$light-grey: #8898aa;
+$text-grey: #aab2c0;
+$bg-grey: #0e101c;
+
+//white
+$base-white: white;
+$base-text-white: #dde4f0;
+
+//red
+$base-red: red;
+$dark-red: #d9545f;
+$danger-button-red: #dc3545;
+
+//green
+$base-green: #07bc0c;
+$dark-green: #1da2b3;
+$toggle-dark-green: #30a45b;
+
+//ash
+$shade-ash: #ffffff73;
+$greenish-ash: #b7b8c1;
+
+// brown
+$base-brown: #5e514147;
+
+// default border
+// $default-border-size: 0px;
+$default-border-size: 10px;
+
+// gradient
+$base-text-gradient: linear-gradient(
+  97.89deg,
+  rgb(255, 255, 255) 70.67%,
+  rgba(117, 122, 140, 0) 108.55%
+);

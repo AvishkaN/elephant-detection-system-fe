@@ -1,0 +1,47 @@
+<div class="display-flex mr-4 mt-3">
+  <i
+    class="fa fa-times ml-auto font-1-4 cursor-pointer"
+    aria-hidden="true"
+    data-toggle="tooltip"
+    data-placement="top"
+    title="Close"
+    (click)="close()"
+  ></i>
+</div>
+
+<h2 mat-dialog-title class="mb-0 text-center pb-0">{{ successTitle }}</h2>
+
+<div class="font-1 mb-4 pl-4 pr-4">
+  <div class="form-wrapper">
+    <div class="">
+      <mat-dialog-content class="mb-2">
+        <div align="center">
+          <p>{{ msg }}</p>
+        </div>
+
+        <div class="" [innerHTML]="html" *ngIf="html"></div>
+      </mat-dialog-content>
+    </div>
+
+    <hr class="mt-3 mb-3" />
+    <div class="row">
+      <div class="col-md-12" align="right">
+        <button
+          mat-flat-button
+          color="primary"
+          class="main-btn mr-2 pb-2 pt-2"
+          (click)="confirm()"
+        >
+          Yes
+        </button>
+
+        <button
+          class="btn btn-secondary font-0-8-5 pb-1 pt-1 border-radius-15"
+          (click)="close()"
+        >
+          CLOSE
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

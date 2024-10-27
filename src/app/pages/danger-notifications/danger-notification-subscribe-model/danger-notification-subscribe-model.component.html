@@ -1,0 +1,102 @@
+<div class="display-flex mb-3 mr-4 mt-3">
+  <i
+    class="fa fa-times ml-auto font-1-4 cursor-pointer"
+    aria-hidden="true"
+    data-toggle="tooltip"
+    data-placement="top"
+    title="Close"
+    (click)="closeModel()"
+  ></i>
+</div>
+<h1 class="font-1-6 header-title text-center mb-4">
+  Subscribe to Notifications
+</h1>
+
+<div class="font-1 mb-4 pl-4 pr-4">
+  <div class="form-wrapper">
+    <form
+      role="form"
+      class="m-t-30"
+      [formGroup]="rForm"
+      (ngSubmit)="submitForm()"
+    >
+      <div class="">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+          >Name</mat-label
+        >
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input
+            matInput
+            placeholder="Enter Email"
+            type="text"
+            formControlName="name"
+          />
+
+          <mat-error
+            *ngIf="
+              !rForm.controls['name'].valid && rForm.controls['name'].touched
+            "
+            >Name is required</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+          >Email</mat-label
+        >
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input
+            matInput
+            placeholder="Enter Email"
+            type="text"
+            formControlName="email"
+          />
+
+          <mat-error
+            *ngIf="
+              !rForm.controls['email'].valid && rForm.controls['email'].touched
+            "
+            >Valid email is required</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+          >company Name</mat-label
+        >
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input
+            matInput
+            placeholder="Enter company name"
+            type="text"
+            formControlName="company"
+          />
+
+          <mat-error
+            *ngIf="
+              !rForm.controls['company'].valid &&
+              rForm.controls['company'].touched
+            "
+            >company name is required</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="d-flex w-100">
+        <button
+          type="submit"
+          mat-flat-button
+          color="primary"
+          class="w-100"
+          [disabled]="!rForm.valid"
+        >
+          Subscribe
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-loader *ngIf="loading"></app-loader>
